@@ -34,7 +34,9 @@ def get_shop_list_by_dishes(dishes, person_count):
     dishes_list = get_recipes(dishes)
 
     shoping_list = dict()
-    for dish in dishes_list.values():
+    for dish_name in dishes:
+        dish = dishes_list[dish_name]
+        # print(dish)
         for ingredient in dish:
             if ingredient['ingredient_name'] not in shoping_list:
                 shoping_list[ingredient['ingredient_name']] = {'measure': ingredient['measure'],
@@ -51,3 +53,5 @@ if __name__ == '__main__':
 
     print('Список покупок:')
     pprint(get_shop_list_by_dishes(['Запеченный картофель', 'Омлет'], 2))
+    # pprint(get_shop_list_by_dishes(['Омлет', 'Омлет'], 2))
+    # pprint(get_shop_list_by_dishes(['Запеченный картофель', 'Картофельное пюре'], 2))
